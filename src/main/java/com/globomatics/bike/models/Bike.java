@@ -1,10 +1,18 @@
 package com.globomatics.bike.models;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
 
+@Entity
 public class Bike {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
     private String name;
     private String email;
     private String phone;
@@ -13,6 +21,14 @@ public class Bike {
     private BigDecimal purchasePrice;
     private Timestamp purchaseDate;
     private boolean contact;
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Long getId() {
+        return id;
+    }
 
     public String getName() {
         return name;
