@@ -1,13 +1,14 @@
 package com.globomatics.bike.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import javax.persistence.*;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
 
 @Entity
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Bike {
 
     @Id
@@ -17,8 +18,13 @@ public class Bike {
     private String email;
     private String phone;
     private String model;
+    @Column(name = "serial_number")
     private String serialNumber;
+
+    @Column(name = "purchase_price")
     private BigDecimal purchasePrice;
+
+    @Column(name = "purchase_date")
     private Timestamp purchaseDate;
     private boolean contact;
 
